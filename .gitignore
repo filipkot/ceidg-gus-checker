@@ -6,3 +6,5 @@ src/.DS_Store
 tsconfig.json
 tslint.json
 .prettierrc
+.gitignore
+.npmignore
