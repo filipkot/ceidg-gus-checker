@@ -1,0 +1,12 @@
+# Created by .ignore support plugin (hsz.mobi)
+
+#libraries
+node_modules
+
+#ide settings
+.idea
+.log
+
+#source map
+*.map
+documentation/
