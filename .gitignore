@@ -1,6 +1,7 @@
 /lib
 /node_modules
 /src/.DS_Store
+/src/__tests__
 .DS_Store
 .gitignore
 .npmignore
