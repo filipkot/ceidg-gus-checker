@@ -59,7 +59,7 @@ export class CompanyData {
 async function GetDataFromNewCeidg(nip: string, token: string, proxy: string): Promise<ResponseData> {
   return new Promise((resolve, reject) => {
     const options = {
-      proxy: `${proxy}`,
+      ...(proxy !== undefined && {proxy: `${proxy}`}),
       url: `${urlCeidg}/api/ceidg/v2/firma?nip=${nip}`,
       method: 'GET',
       headers: {
@@ -170,7 +170,7 @@ async function generateGusSid(apiKey: string, proxy: string): Promise<string> {
       `;
 
     const options = {
-      proxy: `${proxy}`,
+      ...(proxy !== undefined && {proxy: `${proxy}`}),
       method: 'POST',
       url: urlGus,
       headers: {
@@ -213,7 +213,7 @@ async function findGusData(sid: string, type: string, num: string, proxy: string
       </soap:Envelope>`;
 
     const options = {
-      proxy: `${proxy}`,
+      ...(proxy !== undefined && {proxy: `${proxy}`}),
       method: 'POST',
       url: urlGus,
       headers: {
@@ -262,7 +262,7 @@ async function findGusFullReport(
           </soap:Envelope>`;
 
     const options = {
-      proxy: `${proxy}`,
+      ...(proxy !== undefined && {proxy: `${proxy}`}),
       method: 'POST',
       url: urlGus,
       headers: {
@@ -365,7 +365,7 @@ async function findGusFullReportPkd(sid: string, regon: string, proxy: string, r
 
     const options = {
       method: 'POST',
-      proxy: `${proxy}`,
+      ...(proxy !== undefined && {proxy: `${proxy}`}),
       url: urlGus,
       headers: {
         'Content-Type': 'application/soap+xml',
