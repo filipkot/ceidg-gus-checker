@@ -11,9 +11,9 @@ import { CompanyData } from 'ceidg-gus-checker';
 const checker = new CompanyData(
     'ceidg', // source
     'xyz123', // token
-    '', // type
-    611234567, // num
-    'http://<myproxy>:<portNumber>', // optional: proxy
+    '', // type --> nip or regon
+    611234567, // NIP number or REGON number
+    'http://<myproxy>:<portNumber>', // leave blank ('') or enter your proxy
 );
 
 checker.GetCompanyData().then(function(result){
