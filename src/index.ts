@@ -183,11 +183,18 @@ async function generateGusSid(apiKey: string, proxy: string): Promise<string> {
     try {
       request(options, (error: any, response: any) => {
         if (error) { throw new Error(error) };
-        const jsonObj = parser.parse(response.body, {});
-        const jsonObj2 = jsonObj[Object.keys(jsonObj)[0]];
-        const jsonObj3 = jsonObj2[Object.keys(jsonObj2)[1]];
-        const gusSid = jsonObj3[Object.keys(jsonObj3)[1]].ZalogujResponse.ZalogujResult;
-        return resolve(gusSid);
+
+        try {
+          const jsonObj = parser.parse(response.body, {});
+          const jsonObj2 = jsonObj[Object.keys(jsonObj)[0]];
+          const jsonObj3 = jsonObj2[Object.keys(jsonObj2)[1]];
+          const gusSid = jsonObj3[Object.keys(jsonObj3)[1]].ZalogujResponse.ZalogujResult;
+          return resolve(gusSid);
+        } catch (error) {
+          console.error(`Error when logging into GUS! \nBody: ${response.body}`);
+          throw error;
+        }
+        
       });
     } catch (error) {
       return reject(error);
